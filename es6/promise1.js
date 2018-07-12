@@ -1,11 +1,67 @@
-
-function asyncPromise(params) {
-  return new Promise((resolve, reject) => {
-    //resolve(100);
-  })
+function getUserId() {
+  return new Promise(function (resolve) {
+    window.setTimeout(function () {
+      resolve(9876);
+    });
+  });
 }
-asyncPromise().then(() => {
-  console.log("resolve111");
-}).catch(() => {
-  console.log("resolve222");
-})
+
+function getUserMobileById(id) {
+  return new Promise(function (resolve) {
+    console.log('start to get user mobile by id:', id);
+    window.setTimeout(function () {
+      resolve(13810001000);
+    });
+  });
+}
+
+getUserId()
+  .then(getUserMobileById)
+  .then(function (mobile) {
+    console.log('do sth with', mobile);
+  });
+
+
+function Promise(fn) {
+  var state = 'pending',
+    value = null,
+    deferreds = [];
+
+  this.then = function (onFulfilled) {
+    return new Promise(function (resolve) {
+      handle({
+        onFulfilled: onFulfilled || null,
+        resolve: resolve
+      });
+    });
+  };
+
+  function handle(deferred) {
+    if (state === 'pending') {
+      deferreds.push(deferred);
+      return;
+    }
+
+    var ret = deferred.onFulfilled(value);
+    deferred.resolve(ret);
+  }
+
+  function resolve(newValue) {
+    if (newValue && (typeof newValue === 'object' || typeof newValue === 'function')) {
+      var then = newValue.then;
+      if (typeof then === 'function') {
+        then.call(newValue, resolve);
+        return;
+      }
+    }
+    state = 'fulfilled';
+    value = newValue;
+    setTimeout(function () {
+      deferreds.forEach(function (deferred) {
+        handle(deferred);
+      });
+    }, 0);
+  }
+
+  fn(resolve);
+}
