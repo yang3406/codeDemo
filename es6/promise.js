@@ -11,24 +11,30 @@ function A() {
 
 function B(res) {
   return new Promise((resolve, reject) => {
-    console.log("BBBB2");
     setTimeout(() => {
-      resolve("BBBB5555");
-    }, 200);
+      console.log("BBBB2");
+      if (true) {
+        resolve("BBBB5555");
+      }
+      else {
+        reject({ code: 1001, messasge: 'B你错了' });
+      }
+    }, 100);
   });
 };
 
 function C(res) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log(res + "CCCC");
-      let type = 2;
+      let type = 1;
       if (type === 1) {
+        console.log(res + "CCCC1111");
         resolve(res + "CCC");
       } else {
-        reject({ code: 1001, messasge: '你错了' })
+        console.log(res + "CCCC2222");
+        reject({ code: 1001, messasge: 'C你错了' })
       }
-    }, 100);
+    }, 200);
   });
 };
 
@@ -37,7 +43,7 @@ function D(res) {
     setTimeout(() => {
       console.log(res + "DDDDD");
       resolve();
-    }, 100);
+    }, 300);
   });
 };
 
@@ -50,11 +56,19 @@ function D(res) {
   console.log(res);
 }); */
 
-B().then(res => {
+/* B().then(res => {
   return C();
 }).then(res => {
   console.log(res + "kkkkk");
   return D(res);
 }).catch(res => {
   console.log(res.messasge);
-});
+}); */
+
+Promise.all([B(), C(), D()]).then(res => {
+  console.log(res[0] + "100000")
+  console.log(res[1] + "200000")
+  console.log(res[2] + "300000")
+}).catch(err => {
+  console.log(err.messasge + "=error");
+})
