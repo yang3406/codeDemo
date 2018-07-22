@@ -92,7 +92,3 @@ console.log(bill);   // h
   ({ x } = { x: 1 });
 
 }
-
-
-
-

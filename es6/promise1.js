@@ -65,3 +65,13 @@ function Promise(fn) {
 
   fn(resolve);
 }
+
+function killPeoples(params) {
+
+}
+
+killPeoples();
+
+function kill(params) {
+  let killPeoples = "111";
+}

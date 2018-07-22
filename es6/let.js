@@ -44,6 +44,9 @@ if (true) {
   PI = 1;  // Assignment to constant variable.
 }
 
+console.error("fwe");
+
+
 //不会报错 const声明的对象 地址没变 操作的是引用指针
 const CONOBJ = { a: 1, b: 2 };
 CONOBJ.a = 2;
