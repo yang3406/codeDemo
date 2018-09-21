@@ -1,6 +1,6 @@
 
 /* 
-  一:var 1为函数作用域 2变量声明会做函数里面提示到最前面 并没有赋值为undefined  3:在同一个作用域允许多次声明 4:在顶级声明的变量 加入了window.
+  一:var 1为函数作用域 2变量声明会做函数里面提示到最前面 并赋值为undefined  3:在同一个作用域允许多次声明 4:在顶级声明的变量 加入了window.
   二:let 1为块级作用域 2声明不会提升,存在暂时性死区(在块级作用域,在声明let变量前使用它都会报错,不管外面上级是否声明它) 
    3:在相同作用域不允许多次声明同一个变量 4:在顶级声明的变量 没有加入window
   三:const 1声明只读的常量,声明和赋值在一起(只声明,不赋值会报错),不允许修改其地址，常用大写字母作为变量。 2:声明不会提升,存在暂时性死区 3:在相同作用域不允许重复声明
@@ -18,14 +18,14 @@ if (true) {
   var kill = "pppp";  //Identifier 'kill' has already been declared
 }
 
-//for循环中 let index变量在每次循环时 都会重新声明 js引擎内部会记住它上一次循环的值
+//for循环中 let index变量在每次循环时 都会重新声明 js引擎内部会记住它上一次循环的值  arr[3]();输出为3
+//          用var声明的index 不会每次都声明,基本类型数据 引用的同一个地址 arr[3]();输出为5 
 let arr = [];
 for (let index = 0; index < 5; index++) {
   arr[index] = function () {
     console.log(index);
   }
 }
-console.log(index);
 arr[3]();
 
 //let for循环的index 和 函数内部index作用域不同 
