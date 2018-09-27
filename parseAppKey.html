@@ -1,88 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width;initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>AppKey转码</title>
-    <style>
-        .parse-block {
-            width: 600px;
-            margin: 50px auto;
-            font-size: 16px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width;initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <title>AppKey转码</title>
+  <style>
+    .parse-block {
+      width: 600px;
+      margin: 50px auto;
+      font-size: 16px;
+    }
 
-        .parse-item {
-            padding: 50px 0 10px 0;
-        }
+    .parse-item {
+      padding: 50px 0 10px 0;
+    }
 
-        .parse-item:first-of-type {
-            padding: 10px 0 10px 0;
-        }
+    .parse-item:first-of-type {
+      padding: 10px 0 10px 0;
+    }
 
-        .parse-item > input {
-            width: 445px;
-            line-height: 40px;
-            padding: 0 15px;
-            background-color: transparent;
-            outline: none;
-            border: 1px solid #666;
-            margin-right: 15px;
-            font-size: 14px;
-        }
+    .parse-item>input {
+      width: 445px;
+      line-height: 40px;
+      padding: 0 15px;
+      background-color: transparent;
+      outline: none;
+      border: 1px solid #666;
+      margin-right: 15px;
+      font-size: 14px;
+    }
 
-        .parse-item > button {
-            width: 100px;
-            height: 42px;
-            font-size: 16px;
-        }
+    .parse-item>button {
+      width: 100px;
+      height: 42px;
+      font-size: 16px;
+    }
 
-        .parse-item > textarea {
-            resize: none;
-            width: 445px;
-            height: 100px;
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 15px;
-            font-size: 14px;
-            padding: 15px;
-        }
+    .parse-item>textarea {
+      resize: none;
+      width: 445px;
+      height: 100px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 15px;
+      font-size: 14px;
+      padding: 15px;
+    }
 
-        .parse-result:before {
-            content: '结果如下：';
-            margin-right: 20px;
-            color: #0590f3;
-            font-weight: bold;
-        }
+    .parse-result:before {
+      content: '结果如下：';
+      margin-right: 20px;
+      color: #0590f3;
+      font-weight: bold;
+    }
 
-        .parse-result {
-            border: 1px solid #0b4b97;
-            background-color: #fff8d1;
-            margin-top: 15px;
-            min-height: 100px;
-            word-break: break-all;
-            word-wrap: break-word;
-            white-space: normal;
-            padding: 10px;
-        }
-    </style>
+    .parse-result {
+      border: 1px solid #0b4b97;
+      background-color: #fff8d1;
+      margin-top: 15px;
+      min-height: 100px;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: normal;
+      padding: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div class="parse-block">
+  <div class="parse-block">
     <div class="parse-item">【注：】 以下可互为校验</div>
     <div class="parse-item">
-        <input type="text" placeholder="输入要编码的appkey，比如：f599d6e6fd67857e2612b5ac026903b6" id="txtCode1">
-        <button id="btnCharCodeAt" onclick="Utils.charCodeAt('&requestKey='+document.getElementById('txtCode1').value)">编码</button>
-        <div class="parse-result" id="parseResult1"></div>
+      <input type="text" placeholder="输入要编码的appkey，比如：f599d6e6fd67857e2612b5ac026903b6" id="txtCode1">
+      <button id="btnCharCodeAt" onclick="Utils.charCodeAt('&requestKey='+document.getElementById('txtCode1').value)">编码</button>
+      <div class="parse-result" id="parseResult1"></div>
     </div>
     <div class="parse-item">
-        <textarea type="text" placeholder="输入编码后的appkey数组，比如：[38,114,101,113,117,101,115,116,75,101,121,61,102,53,57,57,100,54,101,54,102,100,54,55,56,53,55,101,50,54,49,50,98,53,97,99,48,50,54,57,48,51,98,54]" id="txtCode2"></textarea>
-        <button id="btnFromCharCode" onclick="Utils.fromCharCode(document.getElementById('txtCode2').value)">解码</button>
-        <div class="parse-result" id="parseResult2"></div>
+      <textarea type="text" placeholder="输入编码后的appkey数组，比如：[38,114,101,113,117,101,115,116,75,101,121,61,102,53,57,57,100,54,101,54,102,100,54,55,56,53,55,101,50,54,49,50,98,53,97,99,48,50,54,57,48,51,98,54]"
+        id="txtCode2"></textarea>
+      <button id="btnFromCharCode" onclick="Utils.fromCharCode(document.getElementById('txtCode2').value)">解码</button>
+      <div class="parse-result" id="parseResult2"></div>
     </div>
-</div>
+  </div>
 
-<script>
+  <script>
     /* var Utils = {};
 
      Utils.charCodeAt = function (appkey) {
@@ -111,25 +114,26 @@
 
     //编码
     Utils.charCodeAt = function (appkey) {
-        var newArr = [];
-        for (var i = 0; i < appkey.length; i++) {
-            newArr.push(appkey.charCodeAt(i));
-        }
-        var parseResult1 = document.getElementById('parseResult1');
-        parseResult1.innerHTML = JSON.stringify(newArr);
+      var newArr = [];
+      for (var i = 0; i < appkey.length; i++) {
+        newArr.push(appkey.charCodeAt(i));
+      }
+      var parseResult1 = document.getElementById('parseResult1');
+      parseResult1.innerHTML = JSON.stringify(newArr);
     };
 
     //解码
     Utils.fromCharCode = function (theArr) {
-        var theCharCode = "";
-        theArr = eval(theArr);
-        for (var i = 0; i < theArr.length; i++) {
-            theCharCode += String.fromCharCode(theArr[i]);
-        }
-        var parseResult2 = document.getElementById('parseResult2');
-        parseResult2.innerHTML = theCharCode.split('=')[1];
+      var theCharCode = "";
+      theArr = eval(theArr);
+      for (var i = 0; i < theArr.length; i++) {
+        theCharCode += String.fromCharCode(theArr[i]);
+      }
+      var parseResult2 = document.getElementById('parseResult2');
+      parseResult2.innerHTML = theCharCode.split('=')[1];
     };
 
-</script>
+  </script>
 </body>
+
 </html>
