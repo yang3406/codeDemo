@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .wrapper {
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .split-line {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      border-bottom: 1px solid gray;
+      z-index: -666;
+    }
+
+    .float-right {
+      float: right;
+      width: 20px;
+      height: 20px;
+      z-index: 999;
+    }
+
+    .margin-right {
+      margin-right: 20px;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="split-line"></div>
+    <img class="float-right" src="./images/collection.png">
+    <img class="float-right margin-right" src="./images/share.png">
+  </div>
+</body>
+
+</html>
