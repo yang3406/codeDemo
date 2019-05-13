@@ -29,6 +29,7 @@ console.log(objd)
 /* 
 *  写个兼容方法  兼容对象
 */
+
 function isObj(params) {
   return typeof params == "object" && params != null;
 }
@@ -47,3 +48,14 @@ function copyObj(params) {
   }
   return target;
 }
+var obje = {
+  name: 'yyy',
+  obj: {
+    title: "you nmae",
+    price: "66",
+    kArrL: [1, 2, 3, 4, { obj: "werwer" }]
+  }
+}
+var ll = copyObj(obje);
+
+console.dir(ll);
