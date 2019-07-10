@@ -1,3 +1,4 @@
 var someValue = "abc";
-var strLength = someValue.length;
+var strLength: number = someValue.length;
+
 console.log(someValue);
