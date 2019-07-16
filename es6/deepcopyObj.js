@@ -38,6 +38,7 @@ function copyObj(params) {
   if (!isObj(params)) return params;
   var target = Array.isArray(params) ? [] : {};
   for (var key in params) {
+    //去掉原型链上的属性
     if (Object.prototype.hasOwnProperty.call(params, key)) {
       if (isObj(params[key])) {
         target[key] = copyObj(params[key]);
