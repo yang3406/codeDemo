@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  ul.domtree,
+  ul.domtree ul {
+    margin: 0;
+    padding: 0 0 0 2em;
+  }
+
+  ul.domtree li {
+    list-style: none;
+    position: relative;
+  }
+
+  ul.domtree li:before {
+    position: absolute;
+    content: '';
+    top: -0.1em;
+    left: -0.5em;
+    width: 0.4em;
+    height: 0.615em;
+    border-style: none none solid solid;
+    border-width: 0.05em;
+  }
+
+  /*
+ul.domtree li:last-child {
+    color: gray;
+}
+ul.domtree li:not(:last-child) {
+    color: red;
+}
+*/
+
+  ul.domtree li:not(:last-child):after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: -0.5em;
+    bottom: 0;
+    border-style: none none none solid;
+    border-width: 0.05em;
+  }
+</style>
+
+<body>
+  <ul class="domtree">
+    <li>中国
+      <ul>
+        <li>北京</li>
+        <li>广东省
+          <ul>
+            <li>广州市
+              <ul>
+                <li>宝安市</li>
+                <li>坪洲</li>
+                <li>福田</li>
+              </ul>
+            </li>
+            <li>韶关市</li>
+          </ul>
+        </li>
+        <li>海南省
+          <ul>
+            <li>海口市
+              <ul>
+                <li>美兰区</li>
+                <li>龙华区</li>
+                <li>秀英区</li>
+                <li>琼山区</li>
+              </ul>
+            </li>
+            <li>三亚市</li>
+          </ul>
+        </li>
+        <li>安徽省
+          <ul>
+            <li>合肥市</li>
+            <li>安庆市</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>United States of America
+      <ul>
+        <li>Washington</li>
+        <li>Florida</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+
+</html>

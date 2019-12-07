@@ -57,6 +57,24 @@ console.log([1, 2, 3, 4, 5].copyWithin(0, 3, 2));
 //find 返回第一个符合条件的数组成员 没有返回undefined findIndex返回第一个符合条件的下标 没有返回-1
 console.log([1, 2, 3, -5, -7].find((n) => n < 0)); //-5
 
+//keys() values() entries()
+for (let keys of ['a', 'b', 'c'].keys()) {
+  console.log(keys);
+}
+//values 兼容性很差 会报错
+for (let value of ['a', 'b', 'c'].values()) {
+  console.log(value);
+}
+
+for (let [index, item] of ['a', 'b', 'c'].entries()) {
+  console.log(index + "--" + "item");
+}
+
+//includes 返回一个数组是否包含某个特定的值 与字符串的includes差不多
+console.log([1, 2, 3].includes(2));
+console.log([1, 2, 3].includes(8));
+
+
 //fill 方法使用给定值,填充一个数组
 console.log(['a', 'b', 'c'].fill(7)); //[7,7,7]
 console.log(new Array(5).fill(7)); //[7,7,7,7,7]
@@ -71,3 +89,8 @@ console.log(arr); // [{name: "Ben"}, {name: "Ben"}, {name: "Ben"}]
 let arr = new Array(3).fill([]);
 arr[0].push(5);
 console.log(arr);// [[5], [5], [5]]
+
+//flat()将二位数组变为一维数组 返回一个新数组   flatMap()和map功能类型  返回一个新数组
+console.log([1, 2, [3, [4, 5]]].flat());  //兼容性不好
+
+
