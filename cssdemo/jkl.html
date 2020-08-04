@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <style type="text/css">
+      img {
+        float: right;
+        width: 200px;
+        height: 20px;
+        shape-outside: url(./1.jpg);
+        shape-margin: 4b0px;
+      }
+      .content {
+        position: relative;
+      }
+
+      .text {
+        /* display: -webkit-box; */
+        /* overflow: hidden; */
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        /* -webkit-line-clamp: 2;
+        height: 60px;
+        line-height: 30px; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="content">
+      <img src="./1.jpg" />
+      <p class="text">
+        在CSS
+        Shapes布局问世之前，文字像杂志一样的任意形状的排版几乎是不可能的，一直都是用网格、盒子和直线构造。CSS
+        Shapes允许我们定义文本环绕的几何形状。这些形状可以是圆、椭圆、简单或复杂的多边形，甚至是任意的图像和多彩的渐变。
+        例如这里，使用半透明图像的 url
+        来定义形状，这样文本就会自动环绕它。重要的是要注意图像使用必须要兼容
+        CORS（不要跨域，或者服务器设置'Access-Control-Allow-Origin'），否则会出错，而没有环绕效果。
+      </p>
+    </div>
+  </body>
+</html>
